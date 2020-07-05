@@ -1,7 +1,7 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-require('dotenv').config()
 const Note = require('./models/note')
 
 const cors = require('cors')
@@ -43,9 +43,16 @@ let notes = [
 
 app.get('/api/notes', (request, response) => {
   Note.find({}).then(notes => {
-    response.json(notes.map(note => note.toJSON()))
+    response.json(notes)
   })
 })
+
+const generateId = () => {
+  const maxId = notes.length > 0
+    ? Math.max(...notes.map(n => n.id))
+    : 0
+  return maxId + 1
+}
 
 app.post('/api/notes', (request, response) => {
     const body = request.body
@@ -67,7 +74,7 @@ app.post('/api/notes', (request, response) => {
 
 app.get('/api/notes/:id', (request, response) => {
   Note.findById(request.params.id).then(note => {
-    response.json(note)
+    response.json(note.toJSON())
   })  
 })
 
