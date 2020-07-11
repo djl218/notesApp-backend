@@ -11,7 +11,7 @@ app.use(express.static('build'))
 
 app.get('/api/notes', (request, response) => {
   Note.find({}).then(notes => {
-    response.json(notes)
+    response.json(notes.map(note => note.toJSON()))
   })
 })
 
@@ -63,7 +63,7 @@ app.put('/api/notes/:id', (request, response, next) => {
 
   Note.findByIdAndUpdate(request.params.id, note, { new: true })
     .then(updatedNote => {
-      response.json(updatedNote.toJSON())
+      response.json(updatedNote)
     })
     .catch(error => next(error))
 })
