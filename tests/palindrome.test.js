@@ -1,5 +1,3 @@
-const { TestScheduler } = require('jest')
-
 const palindrome = require('../utils/for_testing').palindrome
 
 test('palindrome of a', () => {
@@ -11,7 +9,7 @@ test('palindrome of a', () => {
 test('palindrome of react', () => {
     const result = palindrome('react')
 
-    expect(result).toBe('tkaer')
+    expect(result).toBe('tcaer')
 })
 
 test('palindrome of releveler', () => {
