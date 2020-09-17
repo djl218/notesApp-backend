@@ -1,5 +1,5 @@
 # notesApp-backend
-Backend for the notes app for the FullStack Open from the University of Helsinki.
+Backend for the notes app.
 
 Link to the notes app:<br>
 https://gorgeous-lassen-volcanic-17734.herokuapp.com/
